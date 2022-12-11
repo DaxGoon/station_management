@@ -44,7 +44,7 @@ The API has the following endpoints:
 
 Here is a sample instruction string that can be passed to the parser API:
     
-    ```
+```
 BEGIN
 Start station 1
 Wait 5
@@ -59,7 +59,8 @@ Wait 5
 Stop station all
 END
 ```
-his instruction string tells the parser API to start station 1, wait 5 seconds, start station 2, wait 10 seconds, start all stations, wait 10 seconds, stop station 2, wait 10 seconds, stop station 3, wait 5 seconds, and finally stop all stations. The parser API will return a JSON response with the resulting state of the stations and companies after these instructions have been executed.
+
+This instruction string tells the parser API to start station 1, wait 5 seconds, start station 2, wait 10 seconds, start all stations, wait 10 seconds, stop station 2, wait 10 seconds, stop station 3, wait 5 seconds, and finally stop all stations. The parser API will return a JSON response with the resulting state of the stations and companies after these instructions have been executed.
 
 To use the station management API, you must first make a POST request to the /companies endpoint, providing the necessary details for the company you want to create. This will return the ID of the created company, which you can then use to make requests to the other endpoints that require a company ID.
 
@@ -83,3 +84,14 @@ You can also use the /stations and /stationTypes endpoints to create, update, an
 
 To use the parser API, you must first make a POST request to the /parseInstructions endpoint, providing the instructions as a plain text string in the request body.
 
+## Caveats:
+
+A local `.env` file with the following is needed:
+
+```
+DATABASE_URL=
+PORT=
+```
+
+Database URL has to be a valid CockroachDB connection string.
+However, postgreSQL connection strings are also supported with minor fixes.
